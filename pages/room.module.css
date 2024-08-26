@@ -1,0 +1,5 @@
+.vidPlayers {
+    @apply flex border-2 border-blue-400 xs:h-4/5 sm:h-3/5 xs:bg-slate-500 sm:w-full md:w-4/6 md:self-center xs:flex-col  items-start ;
+    background: radial-gradient();   
+}
+

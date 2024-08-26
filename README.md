@@ -1,40 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Sure! Here’s a comprehensive README template for your online meet app project:
 
-## Getting Started
+---
 
-First, run the development server:
+# Online Meet App
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Online Meet App is a robust and feature-rich platform designed to facilitate seamless online meetings, providing users with all the necessary tools for effective communication and collaboration. Whether you're hosting a team meeting, a virtual event, or a one-on-one discussion, this app ensures a smooth and user-friendly experience.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. **Create a Meeting**: Start a new meeting with a unique ID and invite participants.
+2. **Join a Meeting**: Enter the meeting ID to join an ongoing session.
+3. **Utilize Features**: Real Time Audio & Video communication and controlling.
+4. **Leave Meeting**: The Participant can leave the meeting securely
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technology Stack
 
-## Learn More
+- **Frontend**: 
+  - React.js
+  - Next.js
+  - Material-UI
+  - Socket.io for real-time communication
 
-To learn more about Next.js, take a look at the following resources:
+- **Backend**:
+  - Node.js
+  - Express.js
+  - WebRTC for peer-to-peer connections
+  - Socket.io for WebSocket management
+  - Peer JS for ease the connecting with WebRTC
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
+### Home Page
+![Home Page](path/to/screenshot1.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### In-Meeting Screen
+![Meeting Screen](path/to/screenshot2.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Installation
+
+### Prerequisites
+
+- Node.js (>=14.x.x)
+- npm (>=6.x.x) or yarn (>=1.x.x)
+
+### Setup
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/chakriswamireddy/Connect-Hub.git
+   cd connect-hub
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the Application**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the App**:
+   Open your browser and navigate to `http://localhost:5000`.
+
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements, bug fixes, or additional features.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- **WebRTC**: For enabling real-time peer-to-peer communication.
+- **Peer JS**: For simplifing the process of establishing & maintaining WebRTC connections. 
+- **Socket.io**: For facilitating WebSocket connections.
+- **Material-UI**: For providing a clean and responsive UI.
+
+## Contact
+
+For questions or feedback, please reach out to [iamthechakri@gmail.com] or open an issue in the repository.
