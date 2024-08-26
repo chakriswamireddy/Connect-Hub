@@ -5,8 +5,6 @@ import usePeer from "@/hooks/usePeer";
 import usePlayer from "@/hooks/usePlayer";
 import useStreamMedia from "@/hooks/useStreamMedia";
 import { useContext, useEffect, useState } from "react";
-
-import styles from './room.module.css'
 import { Box, Grid, Snackbar, Typography } from "@mui/material";
 import PlayersContext, { usePlayerContext } from "@/context/playersContext";
 import playersContext from "@/context/playersContext";
