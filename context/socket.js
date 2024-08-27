@@ -16,9 +16,14 @@ export function SocketProvider(props) {
     const [socket,setSocket]  = useState(null)
 
     useEffect(() => {
-      const connection = io({path:'/api/socket'});
+      const connection = io({path:'/api/socket', transports: ['websocket'],});
         setSocket(connection)
         console.log(connection)
+
+        return () => {
+          connection.disconnect();
+      };
+
     }, [])
 
     socket?.on("connect_error", async (err) => {
