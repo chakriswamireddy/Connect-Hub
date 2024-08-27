@@ -6,12 +6,13 @@ const SocketHandler =(req,res) => {
 
     if (res.socket.server.io) {
         console.log("Socket already running")
-        res.end()
+        // res.end()
     } else {
         
         const io  = new Server(res.socket.server, {
             path:'/api/socket',
             addTrailingSlash: false,
+            transports: ['websocket', 'polling'],
             cors: {
                 origin: "*",
                 methods: ["GET", "POST"],
@@ -58,5 +59,11 @@ const SocketHandler =(req,res) => {
 
 
 }
+
+export const config = {
+    api: {
+      bodyParser: false,
+    },
+  };
 
 export default SocketHandler;

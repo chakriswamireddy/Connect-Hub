@@ -16,7 +16,11 @@ export function SocketProvider(props) {
     const [socket,setSocket]  = useState(null)
 
     useEffect(() => {
-      const connection = io({path:'/api/socket'});
+      const connection = io({
+        path:'/api/socket',
+        addTrailingSlash: false,
+        transports: ['websocket', 'polling'],
+      });
         setSocket(connection)
         console.log(connection)
 

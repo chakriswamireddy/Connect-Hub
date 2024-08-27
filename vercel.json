@@ -1,7 +1,14 @@
 {
     "version": 2,
     "rewrites": [
-        { "source": "/api/socket", "destination": "/api/socket" }
-      ]
-
-  }
+        {
+            "source": "/api/socket",
+            "destination": "/api/socket"
+        }
+    ],
+    "functions": {
+        "api/socket.js": {
+            "maxDuration": 60
+        }
+    }
+}
