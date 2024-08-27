@@ -6,7 +6,7 @@ const SocketHandler =(req,res) => {
 
     if (res.socket.server.io) {
         console.log("Socket already running")
-        // res.end()
+        res.end()
     } else {
         
         const io  = new Server(res.socket.server, {
@@ -16,6 +16,8 @@ const SocketHandler =(req,res) => {
             cors: {
                 origin: "*",
                 methods: ["GET", "POST"],
+                credentials: true
+
             },
         })
         res.socket.server.io = io;
