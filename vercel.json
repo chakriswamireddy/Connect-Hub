@@ -2,12 +2,12 @@
     "version": 2,
     "rewrites": [
         {
-            "source": "/pages/api/socket",
-            "destination": "/pages/api/socket"
+            "source": "/api/socket",
+            "destination": "/api/socket"
         }
     ],
     "functions": {
-        "api/socket.js": {
+        "pages/api/socket.js": {
             "maxDuration": 60
         }
     }
