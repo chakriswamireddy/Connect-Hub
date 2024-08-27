@@ -1,8 +1,4 @@
 {
-    "version": 2,
-    "functions": {
-      "api/socket.js": {
-        "maxDuration": 60
-      }
-    }
+    "version": 2
+
   }
