@@ -10,8 +10,10 @@ const SocketHandler =(req,res) => {
         
         const io  = new Server(res.socket.server, {
             path:'/api/socket',
-            origin: "https://connect-hub-nine.vercel.app/",
-        methods: ["GET", "POST"],
+            cors: {
+                origin: "https://connect-hub-nine.vercel.app/",
+                methods: ["GET", "POST"],
+            },
         })
         res.socket.server.io = io;
         
