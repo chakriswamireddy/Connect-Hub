@@ -16,7 +16,7 @@ export function SocketProvider(props) {
     const [socket,setSocket]  = useState(null)
 
     useEffect(() => {
-      const connection = io( 'https://connect-hub-nine.vercel.app/' , {path:'/api/socket'});
+      const connection = io({path:'/api/socket'});
         setSocket(connection)
         console.log(connection)
 
