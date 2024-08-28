@@ -7,7 +7,7 @@
         }
     ],
     "functions": {
-        "pages/api/socket.js": {
+        "pages/api/*.js": {
             "maxDuration": 60
         }
     },
