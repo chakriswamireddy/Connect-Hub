@@ -1,4 +1,5 @@
 import {Server} from "socket.io"
+import Ably from 'ably';
 
 const SocketHandler =(req,res) => {
 
@@ -71,5 +72,14 @@ export const config = {
       bodyParser: false,
     },
   };
+
+  export async function GET(request) {
+    const client = new Ably.Rest(process.env.ABLY_API_KEY);
+    const tokenRequestData = await client.auth.createTokenRequest({
+      clientId: 'ably-nextjs-demo',
+    });
+    console.log(`Request: ${JSON.stringify(tokenRequestData)}`);
+    return Response.json(tokenRequestData);
+  }
 
 export default SocketHandler;
