@@ -55,6 +55,10 @@ const SocketHandler =(req,res) => {
                 socket.to(roomId).emit('user-leave',userId)
                 // socket.leave(roomId)
             })
+
+            socket.on("disconnect", () => {
+                console.log("Client disconnected", socket.id);
+              });
         })
     }
     res.end();
