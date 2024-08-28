@@ -1,17 +1,11 @@
 {
     "version": 2,
-    "rewrites": [
-        {
-            "source": "/api/socket",
-            "destination": "/api/socket"
+   
+    "functions": {
+        "pages/api/*.js": {
+            "maxDuration": 60
         }
-    ],
-
+    },
     "builds": [{ "src": "next.config.js", "use": "@vercel/next" }],
-    "routes": [
-      {
-        "src": "/api/socket",
-        "dest": "/api/socket"
-      }
-    ]
+
 }
