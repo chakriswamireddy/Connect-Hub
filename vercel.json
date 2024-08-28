@@ -6,11 +6,7 @@
             "destination": "/api/socket"
         }
     ],
-    "functions": {
-        "pages/api/*.js": {
-            "maxDuration": 60
-        }
-    },
+
     "builds": [{ "src": "next.config.js", "use": "@vercel/next" }],
     "routes": [
       {
