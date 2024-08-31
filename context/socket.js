@@ -16,19 +16,35 @@ export function SocketProvider(props) {
     const [socket,setSocket]  = useState(null)
 
     useEffect(() => {
-      const connection = io({
-        path:'/api/socket',
-        addTrailingSlash: false,
-        transports: ['websocket', 'polling'],
-      });
-        setSocket(connection)
-        console.log(connection)
-
-        return () => {
-          connection.disconnect();
+      const connectSocket = async () => {
+        try {
+          const connection = io({
+            path: process.env.NEXT_PUBLIC_SOCKET_PATH || '/api/socket',
+            addTrailingSlash: false,
+            transports: ['websocket', 'polling'],
+          });
+          setSocket(connection);
+          console.log(connection);
+   
+          connection.on("connect_error", async (err) => {
+            console.log("Error Establishing", err);
+            await fetch('/api/socket');
+          });
+          
+          // Cleanup on component unmount
+          return () => {
+            connection.disconnect();
+          };
+   
+        } catch (error) {
+          console.error("Failed to establish socket connection:", error);
+        }
       };
-
-    }, [])
+   
+      connectSocket();
+   
+    }, []);
+   
 
     socket?.on("connect_error", async (err) => {
         console.log("Errror Establishing", err)
