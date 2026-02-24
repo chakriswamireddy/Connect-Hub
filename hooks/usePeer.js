@@ -22,7 +22,7 @@ const { useState, useEffect, useRef } = require("react")
             setPeer(myPeer)
 
             myPeer.on('open',(id) => {
-                console.log("Your Peer id is", id)
+                console.log("Your Peer id is ,", id)
                 setMyId(id)
                 socket?.emit('join-room', roomId,id)
             })

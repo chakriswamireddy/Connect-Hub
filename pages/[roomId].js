@@ -42,7 +42,7 @@ const Room = () => {
     useEffect(() => {
 
         if (!socket || !stream || !peer) return;
-        // console.log(peer)
+
         const handleUserConnected = (newUser) => {
             console.log("new user connected in our room with", newUser)
 
@@ -156,7 +156,7 @@ const Room = () => {
                 setPlayers((prev) => ({
                     ...prev,
                     [callerId]: {
-                        url: stream,
+                        url: incomingStream,
                         muted: false,
                         playing: true,
                     }
@@ -229,7 +229,7 @@ const Room = () => {
                             // <div className="flex-1 sm:w-40 md:w-92 border-2 xs:h-1/4 p-0  xs:border-pink-400  md:border-pink-800 " >
                             <Grid key={playerId} height='55vh' item  >
                                 {playing ?
-                                    <Player muted={muted} playing={playing} url={stream} borderRadius={'10px'} />
+                                    <Player muted={muted} playing={playing} url={url} borderRadius={'10px'} />
                                     :
                                     <svg
                                         width="100%"
@@ -269,7 +269,7 @@ const Room = () => {
                                     width='max-content'
                                 >
                                     {playing ? (
-                                        <Player muted={muted} playing={playing} url={stream} borderRadius={'10px'} />
+                                        <Player muted={muted} playing={playing} url={url} borderRadius={'10px'} />
                                     ) : (
                                         // <TbUserFilled fontSize='50px'  width='100%' height='100%' />
                                         <Grid border={1} borderColor='rgb(251 146 60)'>
