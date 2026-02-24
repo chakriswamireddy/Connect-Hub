@@ -1,59 +1,40 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import {io } from "socket.io-client"
+import { io, Socket } from "socket.io-client"
 
 const SocketContext = createContext(null)
 
-//instead of defining in where we use in app, we are defining here and we can call it (just to decrease redundancy)
-export const useSocket =() => {
-    const gotSocket = useContext(SocketContext)
-    return gotSocket;
-}
+export const useSocket = () => useContext(SocketContext)
 
-export function SocketProvider(props) {
+export function SocketProvider({ children }) {
+  const [socket, setSocket] = useState(null)
 
-    const {children} = props;
+  useEffect(() => {
 
-    const [socket,setSocket]  = useState(null)
-
-    useEffect(() => {
-      const connectSocket = async () => {
-        try {
-          const connection = io({
-            path: process.env.NEXT_PUBLIC_SOCKET_PATH || '/api/socket',
-            addTrailingSlash: false,
-            transports: ['websocket', 'polling'],
-          });
-          setSocket(connection);
-          console.log(connection);
-   
-          connection.on("connect_error", async (err) => {
-            console.log("Error Establishing", err);
-            await fetch('/api/socket');
-          });
-          
-          // Cleanup on component unmount
-          return () => {
-            connection.disconnect();
-          };
-   
-        } catch (error) {
-          console.error("Failed to establish socket connection:", error);
-        }
-      };
-   
-      connectSocket();
-   
-    }, []);
-   
-
-    socket?.on("connect_error", async (err) => {
-        console.log("Errror Establishing", err)
-        await fetch('/api/socket')
+    const url = process.env.NEXT_PUBLIC_SOCKET_PATH
+    console.log("SOCKET URL:", process.env.NEXT_PUBLIC_SOCKET_PATH)
+    if (!url) return;
+    const connection = io(url, {
+      transports: ["websocket"]
     })
-    
+
+    connection.on("connect", () => {
+      console.log("✅ socket connected", connection.id)
+    })
+
+    connection.on("connect_error", (err) => {
+      console.error("❌ socket connect error:", err.message)
+    })
+
+    setSocket(connection)
+
+    return () => {
+      connection.disconnect()
+    }
+  }, [])
+
   return (
     <SocketContext.Provider value={socket}>
-        {children}
+      {children}
     </SocketContext.Provider>
   )
 }
